@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-      <NavBar></NavBar>
+      <NavBar handleClick={setCount}></NavBar>
       <Links handleClick={setCount} count={count}></Links>
       {count === 1 && <Notes></Notes>}
       {count === 2 && <NewCourse></NewCourse>}
