@@ -15,28 +15,15 @@ const Note = ({ data }) => {
   );
 };
 
-const Notes = () => {
-  const url = "https://luentomuistiinpano-api.deta.dev/notes/";
-  const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-
-  useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((response) => {
-        setData(response);
-        setFilteredData(response);
-      });
-  }, []);
-
+const Notes = ({ data }) => {
+  // const [passedData, setPassedData] = useState(data);
+  const [filteredData, setFilteredData] = useState(data);
   const uniqueEntries = data.filter(
     (entry, index, self) =>
       self.findIndex((t) => t.course.name === entry.course.name) === index
   );
 
   const handleChange = (e) => {
-    // console.log(e.target.value + " changed");
-
     if (e.target.value === "all") {
       setFilteredData(data);
       return;
@@ -46,7 +33,6 @@ const Notes = () => {
       (entry) => entry.course.name === e.target.value
     );
     setFilteredData(filteredList);
-    console.log(filteredList);
   };
 
   return (
