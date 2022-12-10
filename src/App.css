@@ -1,6 +1,15 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: center; */
+  width: 100%;
+}
+
+nav {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(109, 31, 161);
 }

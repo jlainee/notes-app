@@ -1,13 +1,23 @@
 import { useState } from "react";
 import "./App.css";
+import "./NavBar";
+import NavBar from "./NavBar";
+import Links from "./Links";
+import Notes from "./Notes";
+import NewCourse from "./NewCourse";
+import ListNotes from "./ListNotes";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App">
-      <h1>Notes App</h1>
-    </div>
+    <>
+      <NavBar></NavBar>
+      <Links handleClick={setCount} count={count}></Links>
+      {count === 1 && <Notes></Notes>}
+      {count === 2 && <NewCourse></NewCourse>}
+      {count === 3 && <ListNotes></ListNotes>}
+    </>
   );
 }
 
