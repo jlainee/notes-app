@@ -9,7 +9,7 @@ const Select = ({ data, handleChange }) => {
   );
 
   return (
-    <>
+    <div className="select-container">
       <label>Course:</label>
       <select onChange={handleChange}>
         <option>all</option>
@@ -17,7 +17,7 @@ const Select = ({ data, handleChange }) => {
           <Option key={i} data={r}></Option>
         ))}
       </select>
-    </>
+    </div>
   );
 };
 
