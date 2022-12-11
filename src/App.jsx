@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <NavBar handleClick={setCount}></NavBar>
-      <Links handleClick={setCount} count={count}></Links>
+      <Links className="links" handleClick={setCount} count={count}></Links>
       {count === 1 && <NewNote data={data}></NewNote>}
       {count === 2 && <NewCourse></NewCourse>}
       {count === 3 && <ListNotes data={data}></ListNotes>}
