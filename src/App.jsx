@@ -8,6 +8,7 @@ import NewCourse from "./NewCourse";
 import ListNotes from "./ListNotes";
 
 function App() {
+  const [courses, setCourses] = useState([]);
   const [count, setCount] = useState(0);
   const url = "https://luentomuistiinpano-api.deta.dev/notes/";
   const [data, setData] = useState([]);
@@ -25,7 +26,9 @@ function App() {
       <NavBar handleClick={setCount}></NavBar>
       <Links className="links" handleClick={setCount} count={count}></Links>
       {count === 1 && <NewNote data={data} setData={setData}></NewNote>}
-      {count === 2 && <NewCourse></NewCourse>}
+      {count === 2 && (
+        <NewCourse courses={courses} setCourses={setCourses}></NewCourse>
+      )}
       {count === 3 && <ListNotes data={data}></ListNotes>}
     </>
   );
