@@ -24,7 +24,7 @@ function App() {
     <>
       <NavBar handleClick={setCount}></NavBar>
       <Links className="links" handleClick={setCount} count={count}></Links>
-      {count === 1 && <NewNote data={data}></NewNote>}
+      {count === 1 && <NewNote data={data} setData={setData}></NewNote>}
       {count === 2 && <NewCourse></NewCourse>}
       {count === 3 && <ListNotes data={data}></ListNotes>}
     </>
