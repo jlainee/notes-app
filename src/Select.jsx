@@ -12,7 +12,7 @@ const Select = ({ courses, handleChange, chref }) => {
     <div className="select-container">
       <label>Course:</label>
       <select ref={chref} onChange={handleChange}>
-        <option>all</option>
+        {!chref && <option>all</option>}
         {courses.map((r, i) => (
           <Option key={i} courses={r}></Option>
         ))}

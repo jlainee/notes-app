@@ -9,8 +9,11 @@ const NewNote = ({ courses, data, setData }) => {
   const [courseId, setCourseId] = useState("0");
   const [dateTime, setDateTime] = useState("null");
   const [text, setText] = useState("");
+  const [isVisible, setVisible] = useState(false);
   const noteRef = useRef(null);
-  const childRef = useRef();
+  const childRef = useRef(null);
+  const errorRef = useRef(null);
+  // const [disabled, setDisabled] = useState(true);
 
   const dataStructure = {
     id: 0,
@@ -42,24 +45,49 @@ const NewNote = ({ courses, data, setData }) => {
 
   const CreateNote = () => {
     let name = childRef.current.value;
+    let noteText = noteRef.current.value;
+
+    if (noteText <= 0) {
+      setVisible(true);
+      setTimeout(() => {
+        // errorRef.current.value = "fk you";
+        setVisible(false);
+      }, 4000);
+      return;
+    }
+
     childRef.current.disabled = true;
     const newData = { ...dataStructure };
     newData.id = noteId + 1;
-    newData.text = noteRef.current.value;
+    newData.text = noteText;
     newData.course.id = GetCourseId(name);
     newData.course.name = name;
     newData.timestamp = GetTime();
     setData([...data, newData]);
   };
 
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    // if (checkSelected() === true) {
+    //   noteRef.current.value = "";
+    // }
+  };
 
   const handleSave = (e) => {
-    // console.log("Note ID before set: " + noteId);
     CreateNote();
     setNoteId(noteId + 1);
     noteRef.current.value = "";
   };
+
+  // not sure if will be used
+  // const checkSelected = () => {
+  //   if (childRef.current.value === "all") {
+  //     setDisabled(true);
+  //     return true;
+  //   } else {
+  //     setDisabled(false);
+  //     return false;
+  //   }
+  // };
 
   useEffect(() => {
     if (data.length <= 0) {
@@ -70,12 +98,15 @@ const NewNote = ({ courses, data, setData }) => {
   }, []);
 
   useEffect(() => {
-    console.log("Set Note ID: " + noteId);
+    // console.log("Set Note ID: " + noteId);
   }, [noteId]);
 
   return (
     <>
       <h2>Add notes</h2>
+      {isVisible && (
+        <h3 ref={errorRef}>Note has to be longer than zero characters.</h3>
+      )}
       <Select
         courses={courses}
         handleChange={handleChange}
@@ -83,8 +114,8 @@ const NewNote = ({ courses, data, setData }) => {
       ></Select>
       <textarea ref={noteRef}></textarea>
       <button onClick={handleSave}>Save</button>
-      <button onClick={() => console.log("Note ID now: " + noteId)}>ID</button>
-      <button onClick={() => console.log(data)}>Data</button>
+      {/* <button onClick={() => console.log("Note ID now: " + noteId)}>ID</button> */}
+      {/* <button onClick={() => console.log(data)}>Data</button> */}
     </>
   );
 };
