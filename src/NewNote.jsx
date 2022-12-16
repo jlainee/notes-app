@@ -3,6 +3,7 @@ import Select from "./Select";
 import "./NewNote.css";
 
 const NewNote = ({ courses, data, setData }) => {
+  const [notesSession, setNotesSession] = useState([]);
   const [noteText, setNoteText] = useState("default");
   const [noteId, setNoteId] = useState(0);
   const [courseName, setCourseName] = useState("course");
@@ -64,6 +65,7 @@ const NewNote = ({ courses, data, setData }) => {
     newData.course.name = name;
     newData.timestamp = GetTime();
     setData([...data, newData]);
+    setNotesSession([...notesSession, newData]);
   };
 
   const handleChange = (e) => {
@@ -114,6 +116,11 @@ const NewNote = ({ courses, data, setData }) => {
       ></Select>
       <textarea ref={noteRef}></textarea>
       <button onClick={handleSave}>Save</button>
+      <ul>
+        {notesSession.map((r, i) => (
+          <li key={i}>{r.text}</li>
+        ))}
+      </ul>
       {/* <button onClick={() => console.log("Note ID now: " + noteId)}>ID</button> */}
       {/* <button onClick={() => console.log(data)}>Data</button> */}
     </>
