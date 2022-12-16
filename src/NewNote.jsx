@@ -29,9 +29,11 @@ const NewNote = ({ courses, data, setData }) => {
   };
 
   const GetTime = () => {
-    let time = Date.now();
-    let date = new Date(time).toISOString().slice(0, -5);
-    return date;
+    let time = new Date();
+    let offset = time.getTimezoneOffset() / -60;
+    time.setHours(time.getHours() + offset);
+    time = time.toISOString().slice(0, -5);
+    return time;
   };
 
   const GetCourseId = (name) => {
@@ -79,6 +81,9 @@ const NewNote = ({ courses, data, setData }) => {
     CreateNote();
     setNoteId(noteId + 1);
     noteRef.current.value = "";
+    console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
+    console.log(new Date().getTimezoneOffset());
+    console.log(new Date().toTimeString());
   };
 
   // not sure if will be used
