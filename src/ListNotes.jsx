@@ -42,6 +42,10 @@ const ListNotes = ({ courses, data, setData }) => {
     console.log(data);
   }, [data]);
 
+  if (data.length <= 0) {
+    return <h1>No courses</h1>;
+  }
+
   return (
     <>
       <h2>Saved notes</h2>

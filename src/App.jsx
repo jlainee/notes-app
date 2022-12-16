@@ -32,12 +32,6 @@ function App() {
       });
   }, []);
 
-  const handleClick = (choice) => {
-    if (NoteAmount <= 0 && choice === 3) {
-      alert("You don't have any notes.");
-    } else setCount(choice);
-  };
-
   console.log(coursesData);
   const GetListOfCourses = (data) => {
     const uniqueCourses = Array.from(
@@ -49,7 +43,7 @@ function App() {
   return (
     <>
       <NavBar handleClick={setCount}></NavBar>
-      <Links className="links" handleClick={handleClick} count={count}></Links>
+      <Links className="links" handleClick={setCount} count={count}></Links>
       {count === 1 && (
         <NewNote courses={coursesData} data={data} setData={setData}></NewNote>
       )}
@@ -59,7 +53,6 @@ function App() {
           setCourses={setCoursesData}
         ></NewCourse>
       )}
-
       {count === 3 && (
         <ListNotes
           courses={coursesData}
@@ -67,7 +60,6 @@ function App() {
           setData={setData}
         ></ListNotes>
       )}
-      {/* <button onClick={() => console.log(test)}></button> */}
     </>
   );
 }
