@@ -54,7 +54,6 @@ const NewNote = ({ courses, data, setData }) => {
     if (noteText <= 0) {
       setVisible(true);
       setTimeout(() => {
-        // errorRef.current.value = "fk you";
         setVisible(false);
       }, 4000);
       return;
