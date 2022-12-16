@@ -16,14 +16,15 @@ const NewNote = ({ courses, data, setData }) => {
   const errorRef = useRef(null);
   // const [disabled, setDisabled] = useState(true);
 
-  const dataStructure = {
+  const courseObject = {
     id: 0,
-    text: "empty",
-    course: {
-      id: 0,
-      name: "empty",
-    },
-    // timestamp: "2022-12-224T13:13:13",
+    name: "null",
+  };
+
+  const noteObject = {
+    id: 0,
+    text: "null",
+    course: courseObject,
     timestamp: dateTime,
   };
 
@@ -58,14 +59,14 @@ const NewNote = ({ courses, data, setData }) => {
     }
 
     childRef.current.disabled = true;
-    const newData = { ...dataStructure };
-    newData.id = noteId + 1;
-    newData.text = noteText;
-    newData.course.id = GetCourseId(name);
-    newData.course.name = name;
-    newData.timestamp = GetTime();
-    setData([...data, newData]);
-    setNotesSession([...notesSession, newData]);
+    const noteData = { ...noteObject };
+    noteData.id = noteId + 1;
+    noteData.text = noteText;
+    noteData.course.id = GetCourseId(name);
+    noteData.course.name = name;
+    noteData.timestamp = GetTime();
+    setData([...data, noteData]);
+    setNotesSession([...notesSession, noteData]);
   };
 
   const handleChange = (e) => {
