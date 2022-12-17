@@ -1,0 +1,38 @@
+.notes-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.note {
+  border: 2px solid rgb(109, 31, 161);
+  background-color: #1d1d1d;
+  min-width: 20rem;
+}
+
+.course-information {
+  border-bottom: 2px solid rgb(109, 31, 161);
+  display: flex;
+  gap: 15px;
+  padding: 5px;
+  /* align-items: center; */
+  justify-content: space-between;
+}
+
+.text-container {
+  min-height: 75px;
+  padding: 5px;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.delete-button {
+  background-color: #272626;
+  padding: 0px 0px 2px 0px;
+}
+
+.timestamp {
+  font-size: 0.8rem;
+}

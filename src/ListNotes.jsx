@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
+import "./ListNotes.css";
 import Select from "./Select";
 
 const Note = ({ data, deleteNote }) => {
   return (
-    <>
-      <li>
-        {data.course.name} (id {data.course.id}) {data.timestamp}
-        <button onClick={() => deleteNote(data.id)}>x</button>
-      </li>
-      <span>{data.text}</span>
-    </>
+    <div className="note">
+      <div className="course-information">
+        <span>
+          {data.course.name} [id: {data.course.id}]
+        </span>
+        <button className="delete-button" onClick={() => deleteNote(data.id)}>
+          [x]
+        </button>
+      </div>
+      <div className="text-container">
+        <span>{data.text}</span>
+        <span className="timestamp">{data.timestamp}</span>
+      </div>
+    </div>
   );
 };
 
@@ -50,11 +58,11 @@ const ListNotes = ({ courses, data, setData }) => {
     <>
       <h2>Saved notes</h2>
       <Select courses={courses} handleChange={handleChange}></Select>
-      <ul>
+      <div className="notes-container">
         {filteredData.map((r, i) => (
           <Note key={i} data={r} deleteNote={deleteNote}></Note>
         ))}
-      </ul>
+      </div>
     </>
   );
 };
