@@ -1,13 +1,17 @@
 .notes-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 5px;
+  display: grid;
+  /* justify-content: space-between; */
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  /* grid-template-columns: repeat(auto-fill, minmax(350px, 400px)); */
+  grid-gap: 1rem;
 }
 
 .note {
   border: 2px solid rgb(109, 31, 161);
   background-color: #1d1d1d;
   min-width: 20rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .course-information {
@@ -15,24 +19,39 @@
   display: flex;
   gap: 15px;
   padding: 5px;
-  /* align-items: center; */
   justify-content: space-between;
 }
 
 .text-container {
-  min-height: 75px;
   padding: 5px;
   word-wrap: break-word;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex: 1;
 }
 
 .delete-button {
   background-color: #272626;
-  padding: 0px 0px 2px 0px;
+  padding: 0px;
 }
 
 .timestamp {
   font-size: 0.8rem;
+  line-height: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.select-container {
+  display: flex;
+  margin: 0.2rem 0;
+  gap: 0.5rem;
+}
+
+.list-notes {
+  padding: 0 1rem;
+}
+
+.heading {
+  text-align: center;
 }

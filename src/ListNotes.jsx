@@ -51,19 +51,19 @@ const ListNotes = ({ courses, data, setData }) => {
   }, [data]);
 
   if (data.length <= 0) {
-    return <h1>No courses</h1>;
+    return <h2 className="heading">No courses</h2>;
   }
 
   return (
-    <>
-      <h2>Saved notes</h2>
+    <div className="list-notes">
+      <h2 className="heading">Saved notes</h2>
       <Select courses={courses} handleChange={handleChange}></Select>
       <div className="notes-container">
         {filteredData.map((r, i) => (
           <Note key={i} data={r} deleteNote={deleteNote}></Note>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
