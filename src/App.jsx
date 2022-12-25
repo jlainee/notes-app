@@ -7,8 +7,6 @@ import NewNote from "./NewNote";
 import NewCourse from "./NewCourse";
 import ListNotes from "./ListNotes";
 
-//READ NOTES
-
 function App() {
   const [courses, setCourses] = useState([]);
   const [coursesData, setCoursesData] = useState([]);
@@ -16,7 +14,6 @@ function App() {
   const url = "https://luentomuistiinpano-api.deta.dev/notes/";
   const url2 = "https://luentomuistiinpano-api.deta.dev/courses/";
   const [data, setData] = useState([]);
-  let NoteAmount = data.length;
 
   useEffect(() => {
     fetch(url)

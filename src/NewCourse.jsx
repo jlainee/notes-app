@@ -38,14 +38,16 @@ const NewCourse = ({ courses, setCourses }) => {
 
   return (
     <div>
-      <h2>Add course</h2>
-      <input placeholder="Course Name" ref={inputRef}></input>
-      <button onClick={handleSave}>Save</button>
-      <ul>
-        {coursesSession.map((r, i) => (
-          <Course key={i} props={r}></Course>
-        ))}
-      </ul>
+      <h2 className="heading">Add course</h2>
+      <div className="main-container">
+        <input placeholder="Course Name" ref={inputRef}></input>
+        <button onClick={handleSave}>Save</button>
+        <ul className="course-list">
+          {coursesSession.map((r, i) => (
+            <Course key={i} props={r}></Course>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

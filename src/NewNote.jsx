@@ -109,26 +109,27 @@ const NewNote = ({ courses, data, setData }) => {
   }, [noteId]);
 
   return (
-    <>
-      <h2>Add notes</h2>
-      {isVisible && (
-        <h3 ref={errorRef}>Note has to be longer than zero characters.</h3>
-      )}
-      <Select
-        courses={courses}
-        handleChange={handleChange}
-        chref={childRef}
-      ></Select>
-      <textarea ref={noteRef}></textarea>
-      <button onClick={handleSave}>Save</button>
-      <ul>
-        {notesSession.map((r, i) => (
-          <li key={i}>{r.text}</li>
-        ))}
-      </ul>
-      {/* <button onClick={() => console.log("Note ID now: " + noteId)}>ID</button> */}
-      {/* <button onClick={() => console.log(data)}>Data</button> */}
-    </>
+    <div>
+      <h2 className="heading">Add notes</h2>
+      <div className="main-container">
+        {isVisible && (
+          <h3 ref={errorRef}>Note has to be longer than zero characters.</h3>
+        )}
+        <Select
+          courses={courses}
+          handleChange={handleChange}
+          chref={childRef}
+        ></Select>
+
+        <textarea ref={noteRef}></textarea>
+        <button onClick={handleSave}>Save</button>
+        <ul className="note-list">
+          {notesSession.map((r, i) => (
+            <li key={i}>{r.text}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 };
 
