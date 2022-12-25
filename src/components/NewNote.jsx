@@ -1,20 +1,13 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef } from "react";
 import Select from "./Select";
-import "./NewNote.css";
 
 const NewNote = ({ courses, data, setData }) => {
   const [notesSession, setNotesSession] = useState([]);
-  const [noteText, setNoteText] = useState("default");
   const [noteId, setNoteId] = useState(0);
-  const [courseName, setCourseName] = useState("course");
-  const [courseId, setCourseId] = useState("0");
-  const [dateTime, setDateTime] = useState("null");
-  const [text, setText] = useState("");
   const [isVisible, setVisible] = useState(false);
   const noteRef = useRef(null);
   const childRef = useRef(null);
   const errorRef = useRef(null);
-  // const [disabled, setDisabled] = useState(true);
 
   const courseObject = {
     id: 0,
@@ -25,7 +18,7 @@ const NewNote = ({ courses, data, setData }) => {
     id: 0,
     text: "null",
     course: courseObject,
-    timestamp: dateTime,
+    timestamp: "",
   };
 
   const GetTime = () => {
@@ -70,12 +63,6 @@ const NewNote = ({ courses, data, setData }) => {
     setNotesSession([...notesSession, noteData]);
   };
 
-  const handleChange = (e) => {
-    // if (checkSelected() === true) {
-    //   noteRef.current.value = "";
-    // }
-  };
-
   const handleSave = (e) => {
     CreateNote();
     setNoteId(noteId + 1);
@@ -85,28 +72,11 @@ const NewNote = ({ courses, data, setData }) => {
     console.log(new Date().toTimeString());
   };
 
-  // not sure if will be used
-  // const checkSelected = () => {
-  //   if (childRef.current.value === "all") {
-  //     setDisabled(true);
-  //     return true;
-  //   } else {
-  //     setDisabled(false);
-  //     return false;
-  //   }
-  // };
-
   useEffect(() => {
-    if (data.length <= 0) {
-      console.log("No notes");
-    } else {
+    if (data.length > 0) {
       setNoteId(GetLastNoteId(data));
     }
   }, []);
-
-  useEffect(() => {
-    // console.log("Set Note ID: " + noteId);
-  }, [noteId]);
 
   return (
     <div>
@@ -115,11 +85,7 @@ const NewNote = ({ courses, data, setData }) => {
         {isVisible && (
           <h3 ref={errorRef}>Note has to be longer than zero characters.</h3>
         )}
-        <Select
-          courses={courses}
-          handleChange={handleChange}
-          chref={childRef}
-        ></Select>
+        <Select courses={courses} chref={childRef}></Select>
 
         <textarea ref={noteRef}></textarea>
         <button onClick={handleSave}>Save</button>

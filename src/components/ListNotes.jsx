@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./ListNotes.css";
+import "../ListNotes.css";
 import Select from "./Select";
 
 const Note = ({ data, deleteNote }) => {
@@ -22,7 +22,6 @@ const Note = ({ data, deleteNote }) => {
 };
 
 const ListNotes = ({ courses, data, setData }) => {
-  // const [passedData, setPassedData] = useState(data);
   const [filteredData, setFilteredData] = useState(data);
 
   const deleteNote = (id) => {

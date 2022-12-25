@@ -1,28 +1,28 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import "./NavBar";
-import NavBar from "./NavBar";
-import Links from "./Links";
-import NewNote from "./NewNote";
-import NewCourse from "./NewCourse";
-import ListNotes from "./ListNotes";
+import "./components/NavBar";
+import NavBar from "./components/NavBar";
+import Links from "./components/Links";
+import NewNote from "./components/NewNote";
+import NewCourse from "./components/NewCourse";
+import ListNotes from "./components/ListNotes";
 
 function App() {
   const [courses, setCourses] = useState([]);
   const [coursesData, setCoursesData] = useState([]);
   const [count, setCount] = useState(0);
-  const url = "https://luentomuistiinpano-api.deta.dev/notes/";
-  const url2 = "https://luentomuistiinpano-api.deta.dev/courses/";
+  const URL = "https://luentomuistiinpano-api.deta.dev/notes/";
+  const URL2 = "https://luentomuistiinpano-api.deta.dev/courses/";
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(url)
+    fetch(URL)
       .then((response) => response.json())
       .then((response) => {
         setData(response);
         setCourses(GetListOfCourses(response));
       });
-    fetch(url2)
+    fetch(URL2)
       .then((response) => response.json())
       .then((response) => {
         setCoursesData(response);
