@@ -8,6 +8,10 @@ The notes remain until the page is refreshed. Saving notes are not implemented y
 
 ## How to Install
 
+**Note: This app is no longer functional.**
+
+**Unfortunately, the API provided by the teacher is no longer available, rendering the app non-operational.**
+
 Requirements: Node.js (newest stable version recommended)
 
 1. Download this repository
